@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: #030712;
+    font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #f3f4f6;
+  }
+
+  .font-cyber {
+    font-family: 'Orbitron', monospace, sans-serif;
+  }
+}
+
+/* Custom cyber scanline overlay (pure CSS, low overhead) */
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0) 50%,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.25)
+  );
+  background-size: 100% 4px;
+}

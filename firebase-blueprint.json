@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile, game progress, achievements, and saved reticle customization",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "highScore": { "type": "number" },
+        "maxCombo": { "type": "number" },
+        "totalKills": { "type": "number" },
+        "deflections": { "type": "number" },
+        "shardsSliced": { "type": "number" },
+        "selectedChampion": { "type": "string", "maxLength": 50 },
+        "unlockedAchievements": { "type": "array" },
+        "credits": { "type": "number" },
+        "unlockedExclusiveBadges": { "type": "array" },
+        "dailyMissionsState": { "type": "string", "maxLength": 3000 },
+        "admobConfig": { "type": "string", "maxLength": 2000 },
+        "reticleStyle": { "type": "string", "maxLength": 30 },
+        "reticleIdleColor": { "type": "string", "maxLength": 20 },
+        "reticleTargetColor": { "type": "string", "maxLength": 20 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "displayName", "highScore"]
+    },
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "High score leaderboard entry visible to all players",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "displayName": { "type": "string", "maxLength": 100 },
+        "photoURL": { "type": "string", "maxLength": 500 },
+        "score": { "type": "number" },
+        "wave": { "type": "number" },
+        "maxCombo": { "type": "number" },
+        "champion": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "displayName", "score", "wave"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private user profiles with stats, achievements, and settings"
+    },
+    "/leaderboard/{entryId}": {
+      "schema": "LeaderboardEntry",
+      "description": "Public high score entries for the Cyber Beach Hall of Fame"
+    }
+  }
+}
